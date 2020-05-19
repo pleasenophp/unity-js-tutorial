@@ -11,14 +11,12 @@ public class JavascriptRunner : MonoBehaviour
     {
       engine = new Engine();
       engine.SetValue("log", new Action<object>(msg => Debug.Log(msg)));
-      engine.SetValue("my-func", 
+      engine.SetValue("myFunc", 
         new Func<int, string>(number => "C# can see that you passed: "+number));
 
       engine.Execute(@"
-        var myVariable = 108;
-        log('Hello from Javascript! myVariable = '+myVariable);
-
-        
+        var responseFromCsharp = myFunc(108);
+        log('Response from C#: '+responseFromCsharp);        
       ");
     }
 }
