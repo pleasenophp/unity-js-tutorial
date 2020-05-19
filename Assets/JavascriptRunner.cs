@@ -1,20 +1,17 @@
 ﻿using UnityEngine;
 using Jint;
 using System;
-using Jint.Runtime.Interop;
 
 public class JavascriptRunner : MonoBehaviour
 {
     private Engine engine;
 
-    private class GameApi {
-      public void ApiMethod1() {
-        Debug.Log("Called api method 1");
-      }
+    private class WorldModel {
+      public string PlayerName {get; set; } = "Alice";
+      public int NumberOfDonuts { get; set; } = 2;
 
-      public int ApiMethod2() {
-        Debug.Log("Called api method 2");
-        return 2;
+      public void Msg() {
+        Debug.Log("This is a function");
       }
     }
 
@@ -24,13 +21,16 @@ public class JavascriptRunner : MonoBehaviour
       engine = new Engine();
       engine.SetValue("log", new Action<object>(msg => Debug.Log(msg)));
 
-      engine.SetValue("GameApi", TypeReference.CreateTypeReference(engine, typeof(GameApi)));
+      var world = new WorldModel();
+      engine.SetValue("world", world);
+      Debug.Log($"{world.PlayerName} has {world.NumberOfDonuts} donuts");
 
       engine.Execute(@"
-        var gameApi = new GameApi();
-        gameApi.ApiMethod1();
-        var result = gameApi.ApiMethod2();
-        log(result);
+        log('Javascript can see that '+world.PlayerName+' has '+world.NumberOfDonuts+' donuts');
+        world.Msg();
+        world.NumberOfDonuts += 3;
       ");
+
+      Debug.Log($"{world.PlayerName} has now {world.NumberOfDonuts} donuts. Thanks, JavaScript, for giving us some");
     }
 }
