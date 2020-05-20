@@ -1,6 +1,6 @@
 
 function hello() {
-  return "Hello from JS file!"
+  return "Hello from JS file! "+someVar;
 }
 
 log(hello());
