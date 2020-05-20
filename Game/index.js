@@ -7,3 +7,7 @@ const hello = () => {
 log(hello());
 log(myFunction1());
 log(myFunction2());
+
+window.thisIsGlobalVariable = 108;
+
+log("I can see global variable: "+thisIsGlobalVariable);
