@@ -1,0 +1,9 @@
+{
+  "name": "My cool game",
+  "version": "0.0.1",
+  "author": "",
+  "scripts": {
+    "build": "webpack --mode production"
+  }
+}
+
