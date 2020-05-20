@@ -1,4 +1,5 @@
-module.exports = {
+module.exports = env => {
+  return {
     entry: {
         app: './index.js'
     },
@@ -8,7 +9,8 @@ module.exports = {
         ]
     },
     optimization: {
-        minimize: true
+        minimize: env != 'dev'
     }
+  };
 };
 

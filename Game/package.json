@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "author": "",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack --mode production",
+    "dev": "webpack --mode production --env dev"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
