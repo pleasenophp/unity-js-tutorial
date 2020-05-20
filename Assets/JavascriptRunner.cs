@@ -14,7 +14,7 @@ public class JavascriptRunner : MonoBehaviour
     {
       engine = new Engine();
       engine.SetValue("log", new Action<object>(msg => Debug.Log(msg)));
-      Execute("Game/index.js");
+      Execute("Game/dist/app.js");
     }
 
     private void Execute(string fileName) {
