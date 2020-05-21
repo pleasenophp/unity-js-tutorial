@@ -24,8 +24,8 @@ const wait = (milliseconds) => new Promise(resolve => {
 
 const asyncFunction = async () => {
   setText("This is a text");
-  await wait();
-  setText("And now it's changed");
+  await wait(5000);
+  setText("And now it's changed after await");
 };
 
 asyncFunction();
