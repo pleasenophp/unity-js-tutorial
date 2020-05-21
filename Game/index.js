@@ -1,14 +1,13 @@
 import { myFunction1, myFunction2 } from './MyModule';
 
-const hello = () => {
-  return "Hello from JS ES6 file!";
+const state = {
+  name: "Alice",
+  level: 2,
 };
-window.hello = hello;
 
-log(hello());
-log(myFunction1());
-log(myFunction2());
+const printState = () => {
+  log(`JS state name: ${state.name}; level: ${state.level}`);
+};
+printState();
 
-window.thisIsGlobalVariable = 108;
 
-log("I can see global variable: "+thisIsGlobalVariable);
