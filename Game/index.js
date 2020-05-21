@@ -1,6 +1,6 @@
 import { myFunction1, myFunction2 } from './MyModule';
 
-const state = {
+var state = {
   name: "Alice",
   level: 2,
 };
@@ -10,4 +10,11 @@ const printState = () => {
 };
 printState();
 
+window.getGameState = () => {
+  return JSON.stringify(state);
+};
 
+window.setGameState = (stateString) => {
+  state = JSON.parse(stateString);
+  printState();
+};

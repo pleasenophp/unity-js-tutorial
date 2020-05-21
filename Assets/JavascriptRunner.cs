@@ -18,6 +18,19 @@ public class JavascriptRunner : MonoBehaviour
       Execute("Game/dist/app.js");
     }
 
+    private void OnGUI() {
+      if (GUILayout.Button("Save game")) {
+        string jsGameState = engine.Execute("getGameState()").GetCompletionValue().AsString();
+        File.WriteAllText("savegame.json", jsGameState);
+        Debug.Log("Game saved");
+      }
+
+      if (GUILayout.Button("Load game")) {
+        string stateString = File.ReadAllText("savegame.json");
+        engine.Invoke("setGameState", stateString);
+      }
+    }
+
     private void Execute(string fileName) {
         var body = "";
         try {
