@@ -3,6 +3,7 @@ import { myFunction1, myFunction2 } from './MyModule';
 const hello = () => {
   return "Hello from JS ES6 file!";
 };
+window.hello = hello;
 
 log(hello());
 log(myFunction1());

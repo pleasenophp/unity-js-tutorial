@@ -16,6 +16,9 @@ public class JavascriptRunner : MonoBehaviour
       engine.SetValue("log", new Action<object>(msg => Debug.Log(msg)));
       engine.Execute("var window = this");
       Execute("Game/dist/app.js");
+
+      engine.Execute("hello()");
+      Debug.Log("C# got result from function: "+engine.GetCompletionValue());
     }
 
     private void Execute(string fileName) {
