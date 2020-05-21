@@ -8,7 +8,6 @@ var state = {
 const printState = () => {
   log(`JS state name: ${state.name}; level: ${state.level}`);
 };
-printState();
 
 window.getGameState = () => {
   return JSON.stringify(state);
@@ -18,3 +17,6 @@ window.setGameState = (stateString) => {
   state = JSON.parse(stateString);
   printState();
 };
+
+setText("This is a text");
+setTimeout(() => setText("And now it is changed"), 5000);
