@@ -51,6 +51,7 @@ public class JavascriptRunner : MonoBehaviour
     private void Execute(string fileName) {
         var body = "";
         try {
+          UnityEngine.Debug.LogWarning("CURR DIR: "+Directory.GetCurrentDirectory());
           body = File.ReadAllText(fileName);
           engine.Execute(body);
         }
