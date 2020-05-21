@@ -18,5 +18,15 @@ window.setGameState = (stateString) => {
   printState();
 };
 
-setText("This is a text");
-setTimeout(() => setText("And now it is changed"), 5000);
+const wait = (milliseconds) => new Promise(resolve => {
+  setTimeout(() => resolve(), milliseconds);
+});
+
+const asyncFunction = async () => {
+  setText("This is a text");
+  await wait();
+  setText("And now it's changed");
+};
+
+asyncFunction();
+
