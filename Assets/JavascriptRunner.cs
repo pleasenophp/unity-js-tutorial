@@ -25,7 +25,7 @@ public class JavascriptRunner : MonoBehaviour
       }));
 
       engine.Execute("var window = this");
-      Execute("Game/dist/app.js");
+      Execute("app");
     }
 
     private IEnumerator TimeoutCoroutine(Delegate callback, int intervalMilliseconds) {
@@ -51,8 +51,7 @@ public class JavascriptRunner : MonoBehaviour
     private void Execute(string fileName) {
         var body = "";
         try {
-          UnityEngine.Debug.LogWarning("CURR DIR: "+Directory.GetCurrentDirectory());
-          body = File.ReadAllText(fileName);
+          body = Resources.Load<TextAsset>(fileName).text;
           engine.Execute(body);
         }
         catch(JavaScriptException ex) {
