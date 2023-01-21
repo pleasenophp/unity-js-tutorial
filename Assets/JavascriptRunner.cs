@@ -51,7 +51,8 @@ public class JavascriptRunner : MonoBehaviour
     private void Execute(string fileName) {
         var body = "";
         try {
-          body = Resources.Load<TextAsset>(fileName).text;
+          var code = Resources.Load<TextAsset>(fileName);
+          body = code.text;
           engine.Execute(body);
         }
         catch(JavaScriptException ex) {
