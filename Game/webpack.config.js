@@ -11,7 +11,7 @@ module.exports = env => {
         ]
     },
     output: {
-      filename: 'app.js',
+      filename: 'app.txt',
       path: path.resolve(__dirname, '../Assets/Resources')
     },
     optimization: {
